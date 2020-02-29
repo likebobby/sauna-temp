@@ -1,0 +1,12 @@
+{
+    "name": "Sauna-Temp",
+    "description": "A Node-RED Project",
+    "version": "0.0.1",
+    "dependencies": {},
+    "node-red": {
+        "settings": {
+            "flowFile": "sauna_flows_raspberrypi.json",
+            "credentialsFile": "sauna_flows_raspberrypi_cred.json"
+        }
+    }
+}
