@@ -75,12 +75,13 @@ export const dialogflowFulfillment = functions.https.onRequest(async (request, r
             const time = date.tz('Europe/Stockholm').format("LT")
             const dateTime = date.tz('Europe/Stockholm').format("D MMMM LT")
             if(temperature > 35) {
-                agent.add(`Det var ${temperatureString} grader i bastun klockan ${time}. Kom in i värmen!`)
+                agent.add(`Det var ${temperatureString} grader i bastun klockan ${time}.`)
                 agent.add(new dialogFlow.Card({
                     title: `Bastutemperatur`,
                     text: `${temperatureString} °C i bastun, ${dateTime}`
                   }
                 ));
+                agent.end('Kom in i värmen!');
             } else {
                 agent.add(`Det var bara ${temperatureString} grader i bastun klockan ${time}.`)
                 agent.add(new dialogFlow.Card({
@@ -88,18 +89,17 @@ export const dialogflowFulfillment = functions.https.onRequest(async (request, r
                     text: `${temperatureString} °C i bastun, ${dateTime}`
                   }
                 ));
-            }
-            
+                agent.end('Återkom gärna senare.');
+            }  
         }
         
     } catch (e) {
-        agent.add('Något gick fel');
+        agent.end('Något gick fel');
         console.error(e.stack);
     }
   }
  
   function fallback() {
-    agent.add(`Vad menar du?`);
     agent.add(`Fattar inte, försök igen!?`);
   }
 
@@ -135,7 +135,7 @@ export const dialogflowFulfillment = functions.https.onRequest(async (request, r
   // Run the proper function handler based on the matched Dialogflow intent name
   const intentMap = new Map();
   intentMap.set('Default Welcome Intent', welcome);
-  intentMap.set('Är du redo?', temp);
+  intentMap.set('Är du redo', temp);
   intentMap.set('Default Fallback Intent', fallback);
   // intentMap.set('your intent name here', yourFunctionHandler);
   // intentMap.set('your intent name here', googleAssistantHandler);
