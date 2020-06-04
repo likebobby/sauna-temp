@@ -3,5 +3,6 @@ Sauna-Temp
 
 ### About
 
-This is your project's README.md file. It helps users understand what your
-project does, how to use it and anything else they may need to know.
+Read temperature with a [DS18B20](https://www.amazon.co.uk/dp/B07VG4121X/ref=pe_3187911_189395841_TE_dp_1) sensor connected to a Raspberri Pi running Node Red.
+
+Data is then stored in Firebase Cloud Firestore and exposed with Firebase Cloud Functions exposing data as Actions on Google DialogFlow Fulfillment. This enables temperature readings from a device running Google Assistant. 
