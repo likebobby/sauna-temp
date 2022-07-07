@@ -23,7 +23,7 @@
     "firebase-functions": "^3.3.0",
     "intl": "^1.2.5",
     "intl-locales-supported": "^1.8.8",
-    "moment": "^2.25.3",
+    "moment": "^2.29.4",
     "moment-timezone": "^0.5.28"
   },
   "devDependencies": {
